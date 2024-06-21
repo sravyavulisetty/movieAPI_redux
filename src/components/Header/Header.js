@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import user from '../../images/userimg.png';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { useDispatch } from 'react-redux';
-import { addSearchQuery, fetchAsyncMovies, fetchAsyncShows } from '../../features/movies/movieSlice';
+import { addSearchQuery } from '../../features/movies/movieSlice';
 import { IoSearch } from "react-icons/io5";
 
 const Header = () => {
@@ -13,6 +13,11 @@ const Header = () => {
     e.preventDefault();
     dispatch(addSearchQuery(value));
   }
+
+  useEffect(() => {
+    dispatch(addSearchQuery("harry"))
+  },[])
+
   return (
     <div className='header'>
         <Link to="/">
